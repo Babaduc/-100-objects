@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Linq
 {
     class Program
     {
-    	public class RandObject:IComparable<RandObject>
+    	[Serializable]
+    	public class RandObject
         {
-            public int Number; 
+    		public int Number; 
             public int Another;
             public bool  Phone;
             public DateTime Date;
             public string Name;
+            
             public RandObject (int number,int another,bool phone,string name, DateTime date)
             {
             	Number=number;
@@ -24,11 +26,16 @@ namespace Linq
             	Date=date;
             	
             }   
-            public int CompareTo(RandObject o)
-            {
-            	return this.Date.Year.CompareTo(o.Date.Year);
-            }
         }
+    	public static void  Output (RandObject[]mas)
+    	{
+    		foreach(RandObject r in mas)
+              	{
+              		Console.Write(r.Name+" ");
+              	}
+            Console.WriteLine("");
+            Console.WriteLine("");
+    	}
 
         static void Main(string[] args)
         {
@@ -48,23 +55,23 @@ namespace Linq
                 int another=rand.Next(0,10);
                 mas[i]= new RandObject(number,another,phone,Convert.ToString(ch),date);     
             }
+            string path = @"C:\Users\Danil\Desktop\t.txt";
            //Операции с сгенерированными объектами
-            var select1= from m in mas where m.Phone==true select m;
-            var sorted1 = from m in select1 orderby m.Number select m;
-            foreach(var t in select1) 
-            	Console.Write(t.Number+" ");
-            Console.WriteLine(" ");
-            Console.WriteLine(" ");
-            foreach(var t in sorted1) 
-            	Console.Write(t.Number+" ");
-            var objgroups= from m in mas group m by m.Date.Year;
-            Console.WriteLine("\n"+select1.All(u=>u.Another>4));
-            Console.WriteLine(select1.Any(u=>u.Another>4));
-            Console.WriteLine("Сумма (неизвестно чего но пусть будет)"+select1.Sum(n=>n.Number));
-            Console.WriteLine("Минималный год в списке "+select1.Min().Date.Year);
-            Console.WriteLine("Максимальный год в списке "+select1.Max().Date.Year);
-            Console.ReadKey(true);
+            BinaryFormatter formarter= new BinaryFormatter();
             
+            using (FileStream fs = new FileStream(path,FileMode.OpenOrCreate))
+            {
+            	formarter.Serialize(fs,mas);
+            }
+            Output(mas);
+            
+              using (FileStream fs = new FileStream(path,FileMode.OpenOrCreate))
+            {
+              	RandObject[] desmas=(RandObject[])formarter.Deserialize(fs);
+              	Output(desmas);
+            }
+            
+            Console.ReadKey(true);
         }
     }
 }

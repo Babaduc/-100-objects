@@ -4,3 +4,9 @@ C:\Users\Danil\Desktop\Для работы\100 objects\Linq\bin\Debug\Linq.exe
 C:\Users\Danil\Desktop\Для работы\100 objects\Linq\bin\Debug\Linq.pdb
 C:\Users\Danil\Desktop\Для работы\100 objects\Linq\obj\Debug\Linq.exe
 C:\Users\Danil\Desktop\Для работы\100 objects\Linq\obj\Debug\Linq.pdb
+C:\Users\Danil\Desktop\Для работы\S100 objects\Linq\obj\Debug\Linq.csprojResolveAssemblyReference.cache
+C:\Users\Danil\Desktop\Для работы\S100 objects\Linq\obj\Debug\Linq.exe
+C:\Users\Danil\Desktop\Для работы\S100 objects\Linq\obj\Debug\Linq.pdb
+C:\Users\Danil\Desktop\Для работы\S100 objects\Linq\bin\Debug\Linq.exe.config
+C:\Users\Danil\Desktop\Для работы\S100 objects\Linq\bin\Debug\Linq.exe
+C:\Users\Danil\Desktop\Для работы\S100 objects\Linq\bin\Debug\Linq.pdb
